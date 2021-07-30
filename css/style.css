@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #82CDFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+header .winner-title {
+  background-color: #0099FF;
+  font-size: 33px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 15px 66px;
+  border-radius: 12px 12px 0 0;
+}
+header .scoreboard {
+  background-color: #0099FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  border-radius: 17px;
+  margin-bottom: 56px;
+}
+header .scoreboard .player-name {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+}
+header .scoreboard .player1-name {
+  margin-right: 20px;
+}
+header .scoreboard .player2-name {
+  margin-left: 20px;
+}
+header .scoreboard .scoreboard-players {
+  width: 131px;
+  height: 120px;
+  border-radius: 17px;
+  background-color: #ffffff;
+  font-size: 104px;
+  font-weight: 900;
+  color: #0099FF;
+  text-align: center;
+}
+header .scoreboard .vs-scoreboard {
+  font-size: 58px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 43px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+}
+main .button-wrapper {
+  height: 100%;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main .button-wrapper button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0099FF;
+  color: #ffffff;
+  font-size: 44px;
+  font-weight: 500;
+  width: 220px;
+  height: 80px;
+  border-radius: 8px;
+}
+main .button-wrapper button:hover {
+  background-color: #82CDFF;
+  color: #0099FF;
+  border: 1px solid #0099FF;
+  transition: 0.3s;
+}
+main .battlefield {
+  background-color: #0099FF;
+  border-radius: 17px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .battlefield .field {
+  background-color: #ffffff;
+  width: 464px;
+  height: 345px;
+  border-radius: 17px;
+}
+main .battlefield .vs-battlefield {
+  font-size: 104px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 90px;
+}
+
+footer button {
+  background-color: #0099FF;
+  font-size: 33px;
+  font-weight: 700;
+  color: #ffffff;
+  width: 238px;
+  height: 69px;
+  border-radius: 6px;
+}
+footer button:first-child {
+  margin-right: 101px;
+}
+footer button:hover {
+  background-color: #82CDFF;
+  color: #0099FF;
+  border: 5px solid #0099FF;
+  transition: 0.3s;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

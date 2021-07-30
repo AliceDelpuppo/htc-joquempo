@@ -1,0 +1,153 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;   
+}
+
+body {
+    background-color: $background-color;
+    @include flex-center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    @include flex-center;
+    flex-direction: column;
+
+    .winner-title {
+        background-color: $secondary-color;
+        font-size: 33px;
+        font-weight: 700;      
+        color: $primary-color;
+        padding: 15px 66px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .scoreboard {
+        background-color: $secondary-color;
+        @include flex-center;
+        padding: 10px 30px;
+        border-radius: 17px;
+        margin-bottom: 56px;
+
+        .player-name {
+            font-size: 38px;
+            font-weight: 700;
+            color: $primary-color;
+        }
+
+        .player1-name {
+            margin-right: 20px;
+        }
+
+        .player2-name {
+            margin-left: 20px;
+        }
+
+        .scoreboard-players {
+            width: 131px;
+            height: 120px;
+            border-radius: 17px;
+            background-color: $primary-color;
+            font-size: 104px;
+            font-weight: 900;
+            color: $secondary-color;
+            text-align: center;
+        }
+
+        .vs-scoreboard {
+            font-size: 58px;
+            font-weight: 900;
+            color: $primary-color;
+            margin: 0 43px;
+        }
+    }
+}
+
+main {
+    @include flex-center;
+    margin-bottom: 22px;
+    
+    .button-wrapper {
+        height: 100%;
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        button {
+            @include flex-center;
+            background-color: $secondary-color;
+            color: $primary-color;
+            font-size: 44px;
+            font-weight: 500;
+            width: 220px;
+            height: 80px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: $background-color;
+                color: $secondary-color;
+                border: 1px solid $secondary-color;
+                transition: 0.3s;
+            }
+        }
+    }
+
+    .battlefield {
+        background-color: $secondary-color;
+        border-radius: 17px;
+        padding: 30px;
+
+        @include flex-center;
+
+        .field {
+            background-color: $primary-color;
+            width: 464px;
+            height: 345px;
+            border-radius: 17px;
+        }
+    
+        .vs-battlefield {
+            font-size: 104px;
+            font-weight: 900;
+            color: $primary-color;
+            margin: 0 90px;
+        }
+    }    
+}
+
+footer {  
+    button {
+        background-color: $secondary-color;
+        font-size: 33px;
+        font-weight: 700;
+        color: $primary-color;
+        width: 238px;
+        height: 69px;
+        border-radius: 6px;
+
+        &:first-child {
+            margin-right: 101px;
+        }
+
+        &:hover {
+            background-color: $background-color;
+            color: $secondary-color;
+            border: 5px solid $secondary-color;
+            transition: 0.3s;            
+        }
+    }
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
