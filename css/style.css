@@ -106,6 +106,9 @@ main .battlefield {
   align-items: center;
 }
 main .battlefield .field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
   width: 464px;
   height: 345px;
@@ -130,16 +133,26 @@ footer button {
 footer button:first-child {
   margin-right: 101px;
 }
-footer button:hover {
-  background-color: #82CDFF;
-  color: #0099FF;
-  border: 5px solid #0099FF;
-  transition: 0.3s;
-}
 
 button {
   border: none;
   cursor: pointer;
+}
+button:hover {
+  background-color: #82CDFF;
+  color: #0099FF;
+  border: 1px solid #0099FF;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.356);
+}
+
+.image {
+  width: 70%;
+}
+
+.player2-field .image {
+  transform: scaleX(-1);
 }
 
 /*# sourceMappingURL=style.css.map */

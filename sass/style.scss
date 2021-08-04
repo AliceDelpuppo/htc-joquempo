@@ -109,6 +109,7 @@ main {
         @include flex-center;
 
         .field {
+            @include flex-center;
             background-color: $primary-color;
             width: 464px;
             height: 345px;
@@ -137,17 +138,29 @@ footer {
         &:first-child {
             margin-right: 101px;
         }
-
-        &:hover {
-            background-color: $background-color;
-            color: $secondary-color;
-            border: 5px solid $secondary-color;
-            transition: 0.3s;            
-        }
     }
 }
 
 button {
     border: none;
     cursor: pointer;
+
+    &:hover {
+        background-color: $background-color;
+        color: $secondary-color;
+        border: 1px solid $secondary-color;
+        transition: 0.3s;
+        letter-spacing: 1px;       
+        box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.356);
+    }
+}
+
+.image {
+    width: 70%;    
+}
+
+.player2-field {
+    .image {
+        transform: scaleX(-1);
+    }
 }
