@@ -1,4 +1,4 @@
-const $buttonStone1 = document.querySelector('#button-strone-p1')
+const $buttonStone1 = document.querySelector('#button-stone-p1')
 const $buttonPaper1 = document.querySelector('#button-paper-p1')
 const $buttonScissor1 = document.querySelector('#button-scissor-p1')
 
