@@ -81,7 +81,13 @@ function givePoint(winner){
 }
 
 function printPoints(scorePlayer1, scorePlayer2){
+    $scoreboardPlayer1.innerHTML = scorePlayer1
+    $scoreboardPlayer2.innerHTML = scorePlayer2
+}
 
+function resetVariables(){
+    player1Move = ''
+    player2Move = ''
 }
 
 
@@ -96,10 +102,9 @@ $buttonStone1.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
     }
-
-    // console.log(`valor de winner2 ${winner}`)
-
 })
 
 $buttonPaper1.addEventListener('click', function(){
@@ -110,6 +115,8 @@ $buttonPaper1.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
     }
 
 })
@@ -122,6 +129,8 @@ $buttonScissor1.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
     }
 
 })
@@ -138,9 +147,9 @@ $buttonStone2.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
-    }
-
-    // console.log(`valor de winner2 ${winner}`)   
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
+    } 
 })
 
 $buttonPaper2.addEventListener('click', function(){
@@ -151,6 +160,8 @@ $buttonPaper2.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
     }
 })
 
@@ -162,6 +173,8 @@ $buttonScissor2.addEventListener('click', function(){
         const winner = verifyWinner(player1Move, player2Move)
         printWinnerName(winner)
         givePoint(winner)
+        printPoints(scorePlayer1, scorePlayer2)
+        resetVariables()
     }
 })
 
