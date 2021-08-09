@@ -14,6 +14,9 @@ const $winnerName = document.querySelector('.winner-title')
 const $scoreboardPlayer1 = document.querySelector('.scoreboard-player1')
 const $scoreboardPlayer2 = document.querySelector('.scoreboard-player2')
 
+const $startGame = document.querySelector('.start-game')
+const $resetGame = document.querySelector('.reset-game')
+
 let player1Move
 let player2Move
 let scorePlayer1 = 0
@@ -85,10 +88,45 @@ function printPoints(scorePlayer1, scorePlayer2){
     $scoreboardPlayer2.innerHTML = scorePlayer2
 }
 
+
+// ------ Funções de resets
 function resetVariables(){
     player1Move = ''
     player2Move = ''
 }
+
+function resetFields(){
+    $fieldPlayer1.innerHTML = ''
+    $fieldPlayer2.innerHTML = ''
+}
+
+function resetWinnerTitle(){
+    $winnerName.innerHTML = 'Jogue'
+}
+
+function resetScore(){
+    $scoreboardPlayer1.innerHTML = '0'
+    $scoreboardPlayer2.innerHTML = '0'
+}
+
+function resetScorePlayerVariables(){
+    scorePlayer1 = 0
+    scorePlayer2 = 0   
+}
+
+function resetAll(){
+    resetVariables()
+    resetFields()
+    resetWinnerTitle()
+    resetScore()
+    resetScorePlayerVariables()    
+}
+// ------ /Funções de resets
+
+
+// ------ Botões
+
+
 
 
 // ------ Jogadas player 1
@@ -104,6 +142,8 @@ $buttonStone1.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     }
 })
 
@@ -117,6 +157,8 @@ $buttonPaper1.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     }
 
 })
@@ -131,6 +173,8 @@ $buttonScissor1.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     }
 
 })
@@ -149,6 +193,8 @@ $buttonStone2.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     } 
 })
 
@@ -162,6 +208,8 @@ $buttonPaper2.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     }
 })
 
@@ -175,6 +223,8 @@ $buttonScissor2.addEventListener('click', function(){
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
+        setTimeout(resetFields, 2000)
+        setTimeout(resetWinnerTitle, 2000)
     }
 })
 
