@@ -17,6 +17,8 @@ const $scoreboardPlayer2 = document.querySelector('.scoreboard-player2')
 const $buttonStartGame = document.querySelector('.start-game')
 const $buttonResetGame = document.querySelector('.reset-game')
 
+const setTimeOutFields = 1500
+
 let player1Move
 let player2Move
 let scorePlayer1 = 0
@@ -28,26 +30,15 @@ function changeImage($player, imageUrl){
 }
 
 function verifyMove(player, move){
-    console.log('aqui')
     if (player == 1) {
         player1Move = move
-
-        console.log(`valor de player1MoveVerifyMove ${player1Move}`)
-
     } else {
         player2Move = move
-
-        console.log(`valor de player2MoveVerifyMove ${player2Move}`)
-
     }    
 }
 
 // ------ Função que verifica o vencedor do jogo
 function verifyWinner(player1Move, player2Move){
-
-    console.log(`valor de player1MoveVerifyWinner ${player1Move}`)
-    console.log(`valor de player2MoveVerifyWinner ${player2Move}`)
-
     if (player1Move == 'stone' && player2Move == 'paper') {
         return 2
     } else if (player1Move == 'stone' && player2Move == 'scissors') {
@@ -63,8 +54,6 @@ function verifyWinner(player1Move, player2Move){
     } else if (player1Move == player2Move) {
         return -1
     }
-
-    console.log(`valor de winner - não deveria ter chegado aqui ${winner}`)
 }
 // ------ /Função que verifica o vencedor do jogo
 
@@ -95,8 +84,7 @@ function givePoint(winner){
         scorePlayer2 += 1
     }
 }
-// ------ Função que adiciona ponto ao placar do vencedor
-
+// ------ /Função que adiciona ponto ao placar do vencedor
 
 
 // ------ Funções de reset
@@ -126,6 +114,8 @@ function resetScorePlayerVariables(){
 
 function resetGameStart(){
     gameStart = false
+	$buttonStartGame.classList.remove('button-active')
+	$buttonStartGame.innerHTML = 'Iniciar'
 }
 
 function resetAll(){
@@ -140,18 +130,16 @@ function resetAll(){
 
 
 // ------ Botões
+
 $buttonStartGame.addEventListener('click', function(){
-	console.log(`valor de startGame ${gameStart}`)
     if (gameStart == false) {
         gameStart = true
 		$buttonStartGame.classList.add('button-active')
 		$buttonStartGame.innerHTML = 'Parar'
-		console.log(`valor de startGame 1 ${gameStart}`)
     } else {
 		gameStart = false
 		$buttonStartGame.classList.remove('button-active')
 		$buttonStartGame.innerHTML = 'Iniciar'
-		console.log(`valor de startGame 2 ${gameStart}`)
     }
 })
 
@@ -159,10 +147,35 @@ $buttonResetGame.addEventListener('click', resetAll)
 // ------ /Botões
 
 
+// ------ Comemoração do vencedor
+function addFireWorks(winner) {
+	if (winner == 1) {
+		$fieldPlayer1.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_jR229r.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+
+		$fieldPlayer2.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_j2JmsU.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+
+	} else if (winner == 2) {
+		$fieldPlayer1.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_j2JmsU.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+
+		$fieldPlayer2.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_jR229r.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+
+	} else {
+		$fieldPlayer1.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_k6hrfq79.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+
+		$fieldPlayer2.innerHTML = `<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_k6hrfq79.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>`
+	}
+}
+// ------ /Comemoração do vencedor
+
+
 // ------ Jogadas player 1
 $buttonStone1.addEventListener('click', function(){
-
-    console.log(`valor de gameStart ${gameStart}`)
 
     if (gameStart == false) return
 
@@ -171,16 +184,18 @@ $buttonStone1.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     }
 })
 
 $buttonPaper1.addEventListener('click', function(){
+
     if (gameStart == false) return
 
     changeImage($fieldPlayer1, 'image/paper.png')
@@ -188,16 +203,18 @@ $buttonPaper1.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     }
 })
 
 $buttonScissor1.addEventListener('click', function(){
+
     if (gameStart == false) return
 
     changeImage($fieldPlayer1, 'image/scissors.png')
@@ -205,20 +222,21 @@ $buttonScissor1.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     }
-
 })
 // ------ /Jogadas player 1
 
 
 // ------ Jogadas player 2
 $buttonStone2.addEventListener('click', function(){
+
     if (gameStart == false) return
 
     changeImage($fieldPlayer2, 'image/stone.png')
@@ -226,16 +244,18 @@ $buttonStone2.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     } 
 })
 
 $buttonPaper2.addEventListener('click', function(){
+
     if (gameStart == false) return
 
     changeImage($fieldPlayer2, 'image/paper.png')
@@ -243,16 +263,18 @@ $buttonPaper2.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     }
 })
 
 $buttonScissor2.addEventListener('click', function(){
+
     if (gameStart == false) return
 
     changeImage($fieldPlayer2, 'image/scissors.png')
@@ -260,12 +282,13 @@ $buttonScissor2.addEventListener('click', function(){
 
     if (player1Move && player2Move) {
         const winner = verifyWinner(player1Move, player2Move)
+		addFireWorks(winner)
         printWinnerName(winner)
         givePoint(winner)
         printPoints(scorePlayer1, scorePlayer2)
         resetVariables()
-        setTimeout(resetFields, 2000)
-        setTimeout(resetWinnerTitle, 2000)
+        setTimeout(resetFields, setTimeOutFields)
+        setTimeout(resetWinnerTitle, setTimeOutFields)
     }
 })
 // ------ /Jogadas player 2
