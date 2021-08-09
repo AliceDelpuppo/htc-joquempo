@@ -155,4 +155,10 @@ button:hover {
   transform: scaleX(-1);
 }
 
+.button-active {
+  background-color: #82CDFF;
+  border: 1px solid #0099FF;
+  color: #0099FF;
+}
+
 /*# sourceMappingURL=style.css.map */

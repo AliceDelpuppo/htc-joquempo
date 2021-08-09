@@ -164,3 +164,11 @@ button {
         transform: scaleX(-1);
     }
 }
+
+.button-active {
+    background-color:$background-color;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;           
+}
+
+    

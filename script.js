@@ -14,8 +14,8 @@ const $winnerName = document.querySelector('.winner-title')
 const $scoreboardPlayer1 = document.querySelector('.scoreboard-player1')
 const $scoreboardPlayer2 = document.querySelector('.scoreboard-player2')
 
-const $startGame = document.querySelector('.start-game')
-const $resetGame = document.querySelector('.reset-game')
+const $buttonStartGame = document.querySelector('.start-game')
+const $buttonResetGame = document.querySelector('.reset-game')
 
 let player1Move
 let player2Move
@@ -68,6 +68,8 @@ function verifyWinner(player1Move, player2Move){
 }
 // ------ /Função que verifica o vencedor do jogo
 
+
+// ------ Funções que imprimem no HTML o vencedor e os pontos de cada jogador 
 function printWinnerName (winner){
     if (winner == 1) {
         $winnerName.innerHTML = 'Jogador 1 ganhou'
@@ -78,6 +80,14 @@ function printWinnerName (winner){
     }
 }
 
+function printPoints(scorePlayer1, scorePlayer2){
+    $scoreboardPlayer1.innerHTML = scorePlayer1
+    $scoreboardPlayer2.innerHTML = scorePlayer2
+}
+// ------ /Funções que imprimem no HTML o vencedor e os pontos de cada jogador 
+
+
+// ------ Função que adiciona ponto ao placar do vencedor
 function givePoint(winner){
     if (winner == 1) {
         scorePlayer1 += 1
@@ -85,11 +95,8 @@ function givePoint(winner){
         scorePlayer2 += 1
     }
 }
+// ------ Função que adiciona ponto ao placar do vencedor
 
-function printPoints(scorePlayer1, scorePlayer2){
-    $scoreboardPlayer1.innerHTML = scorePlayer1
-    $scoreboardPlayer2.innerHTML = scorePlayer2
-}
 
 
 // ------ Funções de reset
@@ -133,14 +140,24 @@ function resetAll(){
 
 
 // ------ Botões
-$startGame.addEventListener('click', function(){
-    gameStart = true
-
-    // if 
+$buttonStartGame.addEventListener('click', function(){
+	console.log(`valor de startGame ${gameStart}`)
+    if (gameStart == false) {
+        gameStart = true
+		$buttonStartGame.classList.add('button-active')
+		$buttonStartGame.innerHTML = 'Parar'
+		console.log(`valor de startGame 1 ${gameStart}`)
+    } else {
+		gameStart = false
+		$buttonStartGame.classList.remove('button-active')
+		$buttonStartGame.innerHTML = 'Iniciar'
+		console.log(`valor de startGame 2 ${gameStart}`)
+    }
 })
 
-$resetGame.addEventListener('click', resetAll)
+$buttonResetGame.addEventListener('click', resetAll)
 // ------ /Botões
+
 
 // ------ Jogadas player 1
 $buttonStone1.addEventListener('click', function(){
