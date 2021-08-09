@@ -21,6 +21,7 @@ let player1Move
 let player2Move
 let scorePlayer1 = 0
 let scorePlayer2 = 0
+let gameStart = false
 
 function changeImage($player, imageUrl){
     $player.innerHTML = `'<img src="${imageUrl}" class="image">'`
@@ -41,6 +42,7 @@ function verifyMove(player, move){
     }    
 }
 
+// ------ Função que verifica o vencedor do jogo
 function verifyWinner(player1Move, player2Move){
 
     console.log(`valor de player1MoveVerifyWinner ${player1Move}`)
@@ -64,6 +66,7 @@ function verifyWinner(player1Move, player2Move){
 
     console.log(`valor de winner - não deveria ter chegado aqui ${winner}`)
 }
+// ------ /Função que verifica o vencedor do jogo
 
 function printWinnerName (winner){
     if (winner == 1) {
@@ -89,7 +92,7 @@ function printPoints(scorePlayer1, scorePlayer2){
 }
 
 
-// ------ Funções de resets
+// ------ Funções de reset
 function resetVariables(){
     player1Move = ''
     player2Move = ''
@@ -114,25 +117,38 @@ function resetScorePlayerVariables(){
     scorePlayer2 = 0   
 }
 
+function resetGameStart(){
+    gameStart = false
+}
+
 function resetAll(){
     resetVariables()
     resetFields()
     resetWinnerTitle()
     resetScore()
-    resetScorePlayerVariables()    
+    resetScorePlayerVariables()
+    resetGameStart()
 }
 // ------ /Funções de resets
 
 
 // ------ Botões
+$startGame.addEventListener('click', function(){
+    gameStart = true
 
+    // if 
+})
 
-
+$resetGame.addEventListener('click', resetAll)
+// ------ /Botões
 
 // ------ Jogadas player 1
-
-
 $buttonStone1.addEventListener('click', function(){
+
+    console.log(`valor de gameStart ${gameStart}`)
+
+    if (gameStart == false) return
+
     changeImage($fieldPlayer1, 'image/stone.png')
     verifyMove(1, 'stone')
 
@@ -148,6 +164,8 @@ $buttonStone1.addEventListener('click', function(){
 })
 
 $buttonPaper1.addEventListener('click', function(){
+    if (gameStart == false) return
+
     changeImage($fieldPlayer1, 'image/paper.png')
     verifyMove(1, 'paper')
 
@@ -160,10 +178,11 @@ $buttonPaper1.addEventListener('click', function(){
         setTimeout(resetFields, 2000)
         setTimeout(resetWinnerTitle, 2000)
     }
-
 })
 
 $buttonScissor1.addEventListener('click', function(){
+    if (gameStart == false) return
+
     changeImage($fieldPlayer1, 'image/scissors.png')
     verifyMove(1, 'scissors')
 
@@ -178,12 +197,13 @@ $buttonScissor1.addEventListener('click', function(){
     }
 
 })
+// ------ /Jogadas player 1
 
 
-// ------ Jogadas player 1
-
-
+// ------ Jogadas player 2
 $buttonStone2.addEventListener('click', function(){
+    if (gameStart == false) return
+
     changeImage($fieldPlayer2, 'image/stone.png')
     verifyMove(2, 'stone')
 
@@ -199,6 +219,8 @@ $buttonStone2.addEventListener('click', function(){
 })
 
 $buttonPaper2.addEventListener('click', function(){
+    if (gameStart == false) return
+
     changeImage($fieldPlayer2, 'image/paper.png')
     verifyMove(2, 'paper')
 
@@ -214,6 +236,8 @@ $buttonPaper2.addEventListener('click', function(){
 })
 
 $buttonScissor2.addEventListener('click', function(){
+    if (gameStart == false) return
+
     changeImage($fieldPlayer2, 'image/scissors.png')
     verifyMove(2, 'scissors')
 
@@ -227,4 +251,5 @@ $buttonScissor2.addEventListener('click', function(){
         setTimeout(resetWinnerTitle, 2000)
     }
 })
+// ------ /Jogadas player 2
 
